@@ -1,0 +1,9 @@
+<!--miniprogram/pages/area-selection/area-selection.wxml-->
+
+<view wx:for="{{list}}" wx:for-index="pIdx" wx:for-item="pItem" class="area-pitem-wrapper">
+  <text>{{pItem.name}}</text>
+  <view wx:for="{{pItem.value}}" wx:for-idx="idx" wx:for-item="item" class="area-name" bindtap="onSelect" data-item="{{item}}">
+    <text>{{item.text}}</text>
+    <text class="area-fieldNumber">{{item.number}}</text>
+  </view>
+</view>

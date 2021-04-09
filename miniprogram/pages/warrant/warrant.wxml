@@ -1,0 +1,13 @@
+<view>
+  <!--miniprogram/pages/warrant/warrant.wxml-->
+  <view><text>火火兔申请以下权限:</text>
+</view>
+<view>
+  <text>获得你公开的信息: (昵称，头像等)</text>
+</view>
+
+<view>
+  <button type="default" wx:if="{{canIUse}}" open-type="getUserInfo" bindtap="bindGetUserInfo">确认授权</button>
+  <view wx:else>请升级微信版本</view>
+</view>
+</view>

@@ -1,0 +1,4 @@
+<view class="wrapper">
+  <!--components/item-comp/item-comp.wxml-->
+  <text>components/item-comp/item-comp.wxml</text>
+</view>

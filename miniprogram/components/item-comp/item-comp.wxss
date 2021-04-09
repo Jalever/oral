@@ -1,0 +1,6 @@
+/* components/item-comp/item-comp.wxss */
+.wrapper {
+  width: 375rpx;
+  height: 100rpx;
+  border: 1px solid #000;
+}

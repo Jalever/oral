@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "item-comp": "/components/item-comp/item-comp"
+  }
+}

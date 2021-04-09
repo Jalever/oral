@@ -1,0 +1,34 @@
+/* miniprogram/pages/login/login.wxss */
+.img-wrapper {
+  text-align: center;
+}
+
+.img {
+  margin: 0 auto;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+
+.cb-wrapper {
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wechat-login-wrapper {
+  width: 100%;
+
+}
+
+.phone-login-wrapper {
+  width: 100%;
+  white-space: nowrap;
+  
+}
+
+.phone-login-button {
+  width: 90%;
+  white-space: nowrap;
+}

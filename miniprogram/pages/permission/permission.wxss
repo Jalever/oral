@@ -1,0 +1,4 @@
+/* miniprogram/pages/permission/permission.wxss */
+.wrapper {
+  padding-top: 100px;
+}

@@ -1,0 +1,16 @@
+/* miniprogram/pages/area-selection/area-selection.wxss */
+.area-pitem-wrapper {
+  width: 91%;
+  margin:0 auto;
+}
+.area-name {
+  width:100%;
+  height: 50rpx;
+  /* background-color: #00ffff; */
+  border-bottom: 1px solid #ccc;
+}
+
+.area-fieldNumber {
+  /* margin-left: auto; */
+  float: right;
+}

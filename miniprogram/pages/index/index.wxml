@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="container">
+<!-- <text>index page</text> -->
+<!-- <button type="primary" bindtap="redirectLoginPage">login page</button> -->
+  <!-- <view class="page-section-title">
+    <text class="headline">这里是第一个页面</text>
+  </view> -->
+
+  <button type="primary" bindtap="onGetPaySign" style="width: 100%">onGetPaySign</button>
+  <button type="primary" bindtap="navigateLoginPage" style="width: 100%;margin-top: 10px;">Login Page</button>
+  <button type="primary" bindtap="navigatePhoneLoginPage" style="width: 100%;margin-top: 10px;">Phone-Login Page</button>
+
+</view>

@@ -1,0 +1,7 @@
+<view class="wrapper">
+  <!--miniprogram/pages/permission/permission.wxml-->
+  <button type="primary" bindtap="getUserProfile">{{LABEL_CONFIRMPERMISSION}}</button>
+  <button type="primary" bindtap="getAddress">获取收获地址</button>
+
+  
+</view>

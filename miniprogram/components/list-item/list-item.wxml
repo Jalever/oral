@@ -1,0 +1,6 @@
+<view class="wrapper">
+  <item-comp pValue="value from parent"></item-comp>
+  <!--components/list-item.wxml-->
+  <text class="txt">components/list-item.wxml</text>
+  <text>{{pValue}}</text>
+</view>

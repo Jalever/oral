@@ -1,0 +1,27 @@
+/* miniprogram/pages/login/login.wxss */
+
+.input-wrapper {
+  margin: 0 auto;
+  padding-left: 4%;
+  padding-right: 4%;
+  box-sizing: border-box;
+  width: 92%;
+  height: 104rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1rpx #d2d2d2;
+}
+
+.input-wrapper:nth-child(odd) {
+  /* background-color: #ff0000; */
+}
+
+.field-number {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #000;
+}
+
+.input-style {
+  /* border: 1px solid #000; */
+}

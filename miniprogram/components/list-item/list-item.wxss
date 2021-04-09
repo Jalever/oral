@@ -1,0 +1,10 @@
+/* components/list-item.wxss */
+.wrapper {
+  width: 100%;
+  /* height: 375rpx; */
+  background-color: #ff0000;
+}
+
+.txt {
+  font-size: 50rpx;
+}
