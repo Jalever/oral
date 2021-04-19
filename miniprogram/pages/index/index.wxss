@@ -8,7 +8,7 @@ page {
 }
 
 .container {
-  margin-top: 200px;
+  /* margin-top: 200px; */
 }
 
 .rect-view {
@@ -178,4 +178,24 @@ page {
 
 .rect-text {
   color: #fff;
+}
+
+.copy-row {
+  display: flex;
+  align-items: center;
+}
+
+.copy-text {
+  width: 500rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.copy-button {
+  width: 100rpx !important;
+  padding: 0 !important;
+    /* line-height: 0 !important; */
+    border-radius: 0 !important;
+    font-size: 17px;
 }

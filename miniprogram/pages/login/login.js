@@ -18,26 +18,26 @@ Page({
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {},
+  onLoad: function (options) { },
   /**
    * Lifecycle function--Called when page is initially rendered
    */
-  onReady: function () {},
+  onReady: function () { },
 
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {},
+  onShow: function () { },
 
   /**
    * Lifecycle function--Called when page hide
    */
-  onHide: function () {},
+  onHide: function () { },
 
   /**
    * Lifecycle function--Called when page unload
    */
-  onUnload: function () {},
+  onUnload: function () { },
 
   /**
    * Page event handler function--Called when user drop down
@@ -64,18 +64,10 @@ Page({
     const gData = app.globalData;
     const jsCode = gData.loginCode;
     const params = {
-      url: '/mengya/weixin/common/get-user-phone',
-      header: {
-        'content-type': 'json' // 有些接口不需要设置
-      },
-      data: {
-        jsCode,
-        encryptedData,
-        iv,
-      }
+      encryptedData, iv, jsCode
     };
-    const res = await request.default(params)
-    const {data } = res;
+    const data = await app.api().getAsyncPhoneNum(params);
+    if(!data) return;
     app.globalData.phoneNumber = data.purePhoneNumber;
   }
 })

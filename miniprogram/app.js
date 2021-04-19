@@ -1,6 +1,8 @@
 //app.js
 const app = getApp();
 const CONSTANTS = require("/constants/index.js");
+const api = require("./api/index");
+const utils = require("./utils/index");
 
 App({
   globalData:{
@@ -10,10 +12,19 @@ App({
     phoneNumber: null,//用户电话号码
     fieldNumber: 86,
     commonToken: null, //common token
+    systemInfo: null, //设备信息
   },
   //绝对路径引入文件
   require(url) {
     return require(url);
+  },
+  // 异步函数
+  api() {
+    return api;
+  },
+  // 工具函数
+  utils() {
+    return utils;
   },
   async onLaunch (options) {
     // Do something initial when launch.
@@ -35,11 +46,17 @@ App({
     console.log(`loginRes - code`);
     console.log(code);
     this.getMenuButtonStatus();
+//获取当前设备信息：system, os, os model...
+    const systemInfo = await this.getSystemInfo();
+    this.globalData.systemInfo = systemInfo;
   },
-  onShow (options) {
+  async onShow (options) {
     // Do something when show.
     // console.log('app.js - onShow');
     // console.log(options);
+    
+
+    
   },
   onHide () {
     // Do something when hide.
@@ -82,4 +99,19 @@ App({
     
     // console.log(menuBtn);
   },
+  getSystemInfo() {
+    let self = this;
+    return new Promise(async (resolve,reject) => {
+      wx.getSystemInfo({
+        success: function (res) {
+          resolve(res);
+        },
+        fail: function(e) {
+          reject(e);
+        }
+      })
+    });
+
+   
+  }
 })

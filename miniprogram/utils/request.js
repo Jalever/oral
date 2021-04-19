@@ -19,4 +19,5 @@ function request(options) {
   });
 }
 
-export default request;
+// export default request;
+module.exports = request;

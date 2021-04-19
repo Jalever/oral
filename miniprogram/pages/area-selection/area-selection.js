@@ -1,6 +1,7 @@
 
 const app = getApp();
 const request = app.require("utils/request");
+const api = app.require("api/index.js");
 
 // miniprogram/pages/area-selection/area-selection.js
 Page({
@@ -17,6 +18,7 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: async function (options) {
+    
     await this.getAsyncArea();
   },
 
@@ -69,17 +71,7 @@ Page({
 
   },
   async getAsyncArea() {
-    const params = {
-      url: '/mengya/res-phone-number-areas/get',
-      header: {
-        'content-type': 'json' // 有些接口不需要设置
-      },
-      data: {}
-    };
-    const res = await request.default(params)
-    const {data } = res;
-    console.log("data");
-    console.log(data);
+    const data = await app.api().getAreaSelection()
     this.setData({ pureList: data });
     this.onFormatList(data);
     // app.globalData.phoneNumber = data.purePhoneNumber;
@@ -91,12 +83,7 @@ Page({
   },
   onSelect(e) {
     const {item} = e.target.dataset;
-    console.log("item");
-    console.log(item);
     app.globalData.fieldNumber = item.number*1;
     wx.navigateBack({delta: 1})
-    
-    console.log("app.globalData");
-    console.log(app.globalData);
   }
 })

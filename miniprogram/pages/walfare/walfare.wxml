@@ -1,0 +1,27 @@
+<view>
+  <view>
+    <official-account style="width:100%;" bindload="onBindLoadOA" binderror="onBindErrorOA"></official-account>
+  </view>
+  
+  <video 
+      id="myVideo" 
+      src="{{videoSrc}}" 
+      binderror="videoErrorCallback" 
+      show-center-play-btn='{{false}}' 
+      show-play-btn="{{true}}" 
+      controls
+      picture-in-picture-mode="{{['push', 'pop']}}"
+      bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+      bindleavepictureinpicture='bindVideoLeavePictureInPicture'
+    ></video>
+
+    <view wx:for="{{walfareList}}" wx:for-idx="idx" wx:for-item="item" wx:key="id" class="walfare-item" bindtap="onSelect" data-item="{{item}}">
+      <image src="{{item.icon}}" class="walfare-icon"/>
+      <view class="walfare-content">
+        <text class="walfare-name">{{item.name}}</text>
+        <text class="walfare-numberOfRecipients">{{item.numberOfRecipients}}</text>
+      </view>
+      <image src="{{item.icon}}" class="walfare-arrow"/>
+    </view>
+    
+</view>

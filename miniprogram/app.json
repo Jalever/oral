@@ -6,13 +6,15 @@
     "pages/login/login",
     "pages/warrant/warrant",
     "pages/phone-login/phone-login",
-    "pages/area-selection/area-selection"
+    "pages/area-selection/area-selection",
+    "pages/walfare/walfare",
+    "pages/order-confirmation/order-confirmation"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "",
+    "navigationBarTitleText": "口腔",
     "navigationStyle": "default",
     "navigationBarTextStyle": "black"
   },
@@ -21,5 +23,31 @@
   "useExtendedLib": {
     "kbone": true,
     "weui": true
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#1989fa",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "宝宝牙记",
+        "iconPath": "images/tabbar/nav_mine_normal.png",
+        "selectedIconPath": "images/tabbar/nav_mine_selected.png"
+      },
+      {
+        "pagePath": "pages/walfare/walfare",
+        "text": "我爱刷牙",
+        "iconPath": "images/tabbar/nav_nry_normal.png",
+        "selectedIconPath": "images/tabbar/nav_nry_selected.png"
+      },
+      {
+        "pagePath": "pages/second/second",
+        "text": "我的",
+        "iconPath": "images/tabbar/nav_nry_normal.png",
+        "selectedIconPath": "images/tabbar/nav_nry_selected.png"
+      }
+    ]
   }
 }

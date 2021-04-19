@@ -1,4 +1,4 @@
-<view style="margin-top: {{statusBarHeight}}rpx">
+<view>
   <!-- <mp-navigation-bar title="首页"></mp-navigation-bar> -->
   <!-- miniprogram/pages/login/login.wxml -->
   <view>
@@ -11,19 +11,23 @@
 
   <view class="input-wrapper">
     <text class="field-number" bindtap="onSelectArea">{{fieldNumber}}</text>
-    <input class="weui-input" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERPHONENUMBER}}" />
+    <input maxlength="11" bindinput="inputFilter" class="phone-input" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERPHONENUMBER}}"/>
   </view>
 
   <view class="input-wrapper">
-    <input class="input-style" password type="text" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERVERIFIEDCODE}}" />
-    <button bindtap="startTimer" disabled="{{isTiming}}">{{codeBtnText}}</button>
+    <input class="input-style" password type="text" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERVERIFIEDCODE}}" model:value="{{userInputCode}}"/>
+    <button bindtap="getVerificationCode" disabled="{{isTiming}}">{{codeBtnText}}</button>
   </view>
 
   <!-- <view>
     <text>{{statusBarHeight}}</text>
   </view> -->
 
+  <view class="privacy-row">
+    <checkbox checked="{{isAgree}}"/><text>同意隐私</text>
+  </view>
+
   <view style="margin-top: 100rpx;">
-    <button type="primary">{{CONSTANTS.LABEL_CONFIRM}}</button>
+    <button type="primary" bindtap="login">{{CONSTANTS.LABEL_CONFIRM}}</button>
     </view>
 </view>

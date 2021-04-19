@@ -3,8 +3,10 @@
 
 const LABELS = require("./labels");
 const VARIABLES = require("./variables");
+const URLS = require("./url");
 
 module.exports = {
   ...LABELS,
   ...VARIABLES,
+  ...URLS,
 }

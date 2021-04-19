@@ -1,0 +1,55 @@
+/* miniprogram/pages/order-confirmation/order-confirmation.wxss */
+.address {
+  width: 100%;
+  height: 200rpx;
+  border-bottom: 20rpx solid #ccc;
+}
+
+.product-uppperpart {
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  display: flex;
+  align-items: center;
+}
+
+.product-icon {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.product-centerpart {
+
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {}
+
+.product-introduce {}
+
+.product-qualitypart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-price {}
+
+.product-quality {}
+
+.product-properties {}
+
+.product-properties-name {}
+
+.product-properties-val {}
+
+.product-properties-valItem {
+
+  margin: 20rpx;
+  border: 1rpx solid #ccc;
+}
+
+.selected {
+  background-color: #00ffff;
+}

@@ -1,5 +1,6 @@
 {
+  "navigationStyle": "custom",
   "usingComponents": {
-    "list-item":"/components/list-item/list-item"
+    "list-item": "/components/list-item/list-item"
   }
 }

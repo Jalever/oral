@@ -1,3 +1,5 @@
+// const { getAsyncOpenId } = require("../../api");
+
 //index.js
 const app = getApp()
 const request = app.require("utils/request.js");
@@ -5,16 +7,23 @@ const api = app.require("api/index.js");
 
 Page({
   data: {
+    openId: null,
   },
 
   onLoad: async function (q) {
     this.getAsyncCommonToken();
-    
-    wx.navigateTo({
-      // url: '/pages/warrant/warrant',
-      // url: '/pages/phone-login/phone-login',
-      // url: '/pages/area-selection/area-selection',
-    })
+
+    // wx.setNavigationBarTitle({
+    //   title: "福利"
+    // });
+
+
+
+    // wx.navigateTo({
+    // url: '/pages/warrant/warrant',
+    // url: '/pages/phone-login/phone-login',
+    // url: '/pages/area-selection/area-selection',
+    // })
   },
 
   getUserProfile() {
@@ -46,39 +55,19 @@ Page({
   async onRequestPay() {
     const paysign = await this.onGetPaySign();
     const invokeRes = await this.onInvokePayment(paysign);
-    console.log("paysign - res: ");
-    console.log(paysign);
-    console.log("invokeRes - res: ");
-    console.log(invokeRes);
+    // console.log("paysign - res: ");
+    // console.log(paysign);
+    // console.log("invokeRes - res: ");
+    // console.log(invokeRes);
   },
-  onGetPaySign() {
-    return new Promise((resolve, reject) => {
-      wx.request({
-        url: 'http://192.168.6.24:8081/mengya/weixin/pay/createOrder',
-        data: {
-          body: '软件部测试---腾讯充值中心-QQ会员充值',
-          totalFee: 1,
-          spbillCreateIp: "123.12.12.123",
-          tradeType: "JSAPI",
-          openid: "oRcL64lEuQeuyGsWloGb7Qzr6w6c"
-        },
-        method: 'post',
-        header: {
-          'Content-Type': 'application/json'
-        },
-        success: function (res) {
-          resolve(res.data);
-        },
-        fail: function (res) {
-          reject(res);
-        }
-      })
-    });
+  async onGetPaySign() {
+    const res = await api.onGetPaySign();
+    return res;
   },
 
   onInvokePayment(params) {
-    console.log('params');
-    console.log(params);
+    // console.log('params');
+    // console.log(params);
     return new Promise((resolve, reject) => {
       wx.requestPayment({
         // ...params,
@@ -104,6 +93,149 @@ Page({
   async getAsyncCommonToken() {
     const token = await api.getAsyncCommonToken();
     app.globalData.commonToken = token;
+  },
+  async getAsyncOpenId() {
+    // console.log('app - globalData: ');
+    // console.log(app);
+    // console.log('app.api() - globalData: ');
+    // console.log(app.api());
+    const loginCode = getApp().globalData.loginCode;
+    const params = { jsCode: loginCode }
+    const openId = await app.api().getAsyncOpenId(params);
+    // this.openId = openId;
+    this.setData({ openId });
+  },
+
+  async onCopyOpenId() {
+    const self = this;
+    // console.log('this.openId -  wx.setClipboardData: ');
+    const openId = self.data.openId;
+    wx.setClipboardData({
+      data: `${openId}`,
+      success(res) {
+        wx.getClipboardData({
+          success(res) {
+          },
+          fail(res) {
+          },
+          complete(res) {
+          }
+        })
+      }
+    })
+  },
+  async onSubscribeOrder() {
+    const orderSuc = "NXR-l8P2TSTLFfW9Ne-5g5sNxPbyL4Ast820CYrcrLg";
+    // const unreadMsg = "zjw8TeQqOCil1rXgYCWOKcMi0If_Dk4mnAjIS269wA4";
+    // const orderDelivery = "GBel-G6XLR9SQgUSD3sIrnb1cW7_hBPqfoZEdyyn9Wo";
+
+    const tmplIds = [orderSuc];
+    wx.requestSubscribeMessage({
+      tmplIds: tmplIds,
+      success(res) {
+        console.log('res - onSubscribeOrder - success ');
+        console.log(res);
+      },
+      fail(res) {
+        console.log('res - onSubscribeOrder - fail ');
+        console.log(res);
+      },
+      complete(res) {
+        console.log('res - onSubscribeOrder - complete ');
+        console.log(res);
+      }
+    })
+  },
+  async onSubscribeUnread() {
+    // const orderSuc = "NXR-l8P2TSTLFfW9Ne-5g5sNxPbyL4Ast820CYrcrLg";
+    const unreadMsg = "zjw8TeQqOCil1rXgYCWOKcMi0If_Dk4mnAjIS269wA4";
+    // const orderDelivery = "GBel-G6XLR9SQgUSD3sIrnb1cW7_hBPqfoZEdyyn9Wo";
+
+    const tmplIds = [unreadMsg];
+    wx.requestSubscribeMessage({
+      tmplIds: tmplIds,
+      success(res) {
+        console.log('res - onSubscribeUnread - success ');
+        console.log(res);
+      },
+      fail(res) {
+        console.log('res - onSubscribeUnread - fail ');
+        console.log(res);
+      },
+      complete(res) {
+        console.log('res - onSubscribeUnread - complete ');
+        console.log(res);
+      }
+    })
+  },
+  async onSubscribeDelivery() {
+    // const orderSuc = "NXR-l8P2TSTLFfW9Ne-5g5sNxPbyL4Ast820CYrcrLg";
+    // const unreadMsg = "zjw8TeQqOCil1rXgYCWOKcMi0If_Dk4mnAjIS269wA4";
+    const orderDelivery = "GBel-G6XLR9SQgUSD3sIrnb1cW7_hBPqfoZEdyyn9Wo";
+
+    const tmplIds = [orderDelivery];
+    wx.requestSubscribeMessage({
+      tmplIds: tmplIds,
+      success(res) {
+        console.log('res - onSubscribeOrder - success ');
+        console.log(res);
+      },
+      fail(res) {
+        console.log('res - onSubscribeOrder - fail ');
+        console.log(res);
+      },
+      complete(res) {
+        console.log('res - onSubscribeOrder - complete ');
+        console.log(res);
+      }
+    })
+  },
+  async onSubscribeMsg() {
+    const orderSuc = "NXR-l8P2TSTLFfW9Ne-5g5sNxPbyL4Ast820CYrcrLg";
+    const unreadMsg = "zjw8TeQqOCil1rXgYCWOKcMi0If_Dk4mnAjIS269wA4";
+    const orderDelivery = "GBel-G6XLR9SQgUSD3sIrnb1cW7_hBPqfoZEdyyn9Wo";
+
+    const tmplIds = [orderSuc, unreadMsg, orderDelivery];
+    wx.requestSubscribeMessage({
+      tmplIds: tmplIds,
+      success(res) {
+        console.log('res - onSubscribeMsg - success ');
+        console.log(res);
+      },
+      fail(res) {
+        console.log('res - onSubscribeMsg - fail ');
+        console.log(res);
+      },
+      complete(res) {
+        console.log('res - onSubscribeMsg - complete ');
+        console.log(res);
+      }
+    })
+  },
+  invokeSetting() {
+    wx.openSetting({
+      success (res) {
+        console.log('invokeSetting - res')
+        console.log(res)
+        // res.authSetting = {
+        //   "scope.userInfo": true,
+        //   "scope.userLocation": true
+        // }
+      }
+    })
+  },
+  getSetting() {
+    wx.getSetting({
+      withSubscriptions:true,
+      success (res) {
+        console.log('getSetting - res')
+        console.log(res)
+        // res.authSetting = {
+        //   "scope.userInfo": true,
+        //   "scope.userLocation": true
+        // }
+      }
+    })
   }
 
 })

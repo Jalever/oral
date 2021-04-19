@@ -1,0 +1,29 @@
+<view>
+  <view class="address">
+    请编写收货地址
+  </view>
+
+  <view class="product-option">
+    <view class="product-uppperpart">
+      <image src="{{curItem.icon}}" class="product-icon" />
+      <view class="product-centerpart">
+        <text class="product-name">{{curItem.name}}</text>
+        <text class="product-introduce">{{curItem.introduce}}</text>
+        <view class="product-qualitypart">
+          <text class="product-price">￥{{curItem.unitPrice}}</text>
+          <text class="product-quality">X1</text>
+        </view>
+      </view>
+    </view>
+    <view class="product-properties">
+      <view wx:for="{{properties}}" wx:for-idx="pIdx" wx:for-item="pItem" wx:key="pIdx" class="product-properties-name"
+        data-item="{{pItem}}">
+        <text>{{pItem.name}}</text>
+        <view class="product-properties-val">
+          <text wx:for="{{pItem.val}}" wx:for-idx="idx" wx:for-item="item" wx:key="id"
+            data-item="{{item}}" class="product-properties-valItem {{item.isSelected ? 'selected' : ''}}" bindtap="onSelect">{{item.pValue}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
