@@ -27,5 +27,18 @@ module.exports = {
     };
     const res = await request(params)
     return res;
+  },
+  //检查产品库存
+  async onCheckStock(data) {
+    const params = {
+      url: `${CONSTANTS.URL_DEVPREFIX}/mengya/res-fuli-product/check-stock`,
+      header: {
+        'content-type': 'application/json' // 有些接口不需要设置
+      },
+      method: "POST",
+      data
+    };
+    const res = await request(params)
+    return res;
   }
 }

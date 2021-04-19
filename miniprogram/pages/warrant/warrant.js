@@ -68,9 +68,9 @@ Page({
       success: function (res) {
         console.log(res.userInfo)
 
-        wx.navigateTo({
-          url: '/pages/login/login',
-        })
+        // wx.navigateTo({
+        //   url: '/pages/login/login',
+        // })
       }
     })
   }

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "宝宝列表",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "mp-badge": "weui-miniprogram/badge/badge"
+  }
+}

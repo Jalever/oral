@@ -1,8 +1,11 @@
-<view>
-  <view class="address">
-    请编写收货地址
+<view class="wrapper">
+  <view class="address" bindtap="navigateToAddress">
+    <text wx:if="{{defaultAddress}}">{{defaultAddress.name}}</text>
+    <text wx:if="{{defaultAddress}}">{{defaultAddress.phone}}</text>
+    <text wx:if="{{defaultAddress}}">{{defaultAddress.address}}</text>
   </view>
 
+  <!-- 选择商品型号，商品价格，运费 -->
   <view class="product-option">
     <view class="product-uppperpart">
       <image src="{{curItem.icon}}" class="product-icon" />
@@ -20,10 +23,35 @@
         data-item="{{pItem}}">
         <text>{{pItem.name}}</text>
         <view class="product-properties-val">
-          <text wx:for="{{pItem.val}}" wx:for-idx="idx" wx:for-item="item" wx:key="id"
-            data-item="{{item}}" class="product-properties-valItem {{item.isSelected ? 'selected' : ''}}" bindtap="onSelect">{{item.pValue}}</text>
+          <text wx:for="{{pItem.val}}" wx:for-idx="idx" wx:for-item="item" wx:key="id" data-item="{{item}}"
+            class="product-properties-valItem {{item.isSelected ? 'selected' : ''}}"
+            bindtap="onSelect">{{item.pValue}}</text>
         </view>
       </view>
     </view>
+  </view>
+
+  <!-- 商品价格，运费 -->
+  <view class="product-price">
+    <view class="product-price-row">
+      <text>商品价格</text>
+      <text class="{{curItem.isFree ? 'lineThrough' : ''}}">￥{{curItem.unitPrice}}</text>
+    </view>
+
+    <view class="product-price-row">
+      <text>运费</text>
+      <text>￥{{curItem.transportPrice}}</text>
+    </view>
+    
+    <view class="product-price-row">
+      <text>合计</text>
+      <text>￥{{curItem.isFree ? curItem.transportPrice : curItem.unitPrice + curItem.transportPrice}}</text>
+    </view>
+  </view>
+
+  <view class="payment-area">
+    <text>合计: {{curItem.isFree ? curItem.transportPrice : curItem.unitPrice + curItem.transportPrice}}</text>
+      <text style="margin-left: 10rpx;">含运费: {{curItem.transportPrice}}</text>
+      <button class="payment-btn" style="display:inline-block;" bindtap="onPay">支付</button>
   </view>
 </view>

@@ -4,30 +4,25 @@
   <view>
     <text>{{CONSTANTS.LABEL_VERIFICATIOINCODETEXT}}</text>
   </view>
-
   <view>
     <text>{{CONSTANTS.LABEL_NEWUSERTIPSTEXT}}</text>
   </view>
-
   <view class="input-wrapper">
     <text class="field-number" bindtap="onSelectArea">{{fieldNumber}}</text>
-    <input maxlength="11" bindinput="inputFilter" class="phone-input" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERPHONENUMBER}}"/>
+    <input maxlength="11" bindinput="inputFilter" class="phone-input" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERPHONENUMBER}}" />
   </view>
-
   <view class="input-wrapper">
-    <input class="input-style" password type="text" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERVERIFIEDCODE}}" model:value="{{userInputCode}}"/>
+    <input class="input-style" placeholder="{{CONSTANTS.LABEL_PLACEHOLDERVERIFIEDCODE}}" model:value="{{userInputCode}}" bindinput="inputPassword" />
     <button bindtap="getVerificationCode" disabled="{{isTiming}}">{{codeBtnText}}</button>
   </view>
-
   <!-- <view>
     <text>{{statusBarHeight}}</text>
   </view> -->
-
   <view class="privacy-row">
-    <checkbox checked="{{isAgree}}"/><text>同意隐私</text>
+    <checkbox checked="{{isAgree}}" />
+    <text>同意隐私</text>
   </view>
-
   <view style="margin-top: 100rpx;">
     <button type="primary" bindtap="login">{{CONSTANTS.LABEL_CONFIRM}}</button>
-    </view>
+  </view>
 </view>

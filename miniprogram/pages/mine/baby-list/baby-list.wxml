@@ -1,0 +1,20 @@
+<view class="wrapper">
+  <view wx:for="{{list}}" wx:for-item="item" wx:for-index="idx" wx:key="id" class="item">
+    <view class="avatar-item" bindtap="onUpdateDefaultBaby" data-item="{{item}}">
+      <image src="{{item.head}}" class='avatar' />
+      <mp-badge content="V" class='badge' wx:if="{{item.isAuto}}" />
+    </view>
+    <view class='center-part' bindtap="onUpdateDefaultBaby" data-item="{{item}}">
+      <view class='center-uppperpart'>
+        <text class='nickname'>{{item.nickName}}</text>
+        <text>{{item.sexStr}}</text>
+      </view>
+      <view class='center-lowerpart'>
+        <text>{{item.birthday}}</text>
+      </view>
+    </view>
+    <text class='edit' bindtap="navigateToEditBaby" data-item="{{item}}">编辑</text>
+    <text class='delete' bindtap="deleteBaby" data-item="{{item}}">删除</text>
+  </view>
+  <view class='add-baby' bindtap="navigateToAddBaby">+添加宝宝</view>
+</view>

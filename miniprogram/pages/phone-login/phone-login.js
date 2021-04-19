@@ -67,7 +67,7 @@ Page({
     console.log(`isMainland: ${isMainland}`);
 
     //获取系统system，model等
-    const systemInfo = await app.getSystemInfo();
+    const systemInfo = await app.getSystemInfo();    
     const { system, model } = systemInfo;
     this.setData({ system, model });
   },
@@ -147,6 +147,9 @@ Page({
     this.setData({ inputPhoneNumber: value });
     return value;
   },
+  inputPassword(e) {
+    
+  },
   onSelectArea() {
     wx.navigateTo({
       url: '/pages/area-selection/area-selection',
@@ -168,14 +171,16 @@ Page({
     const codeText = {title: 'non-code',icon: 'none',};
     const numberText = {title: 'non-number',icon: 'none',};
     const codeNonEqualText = {title: 'non-equal',icon: 'none',};
+
     if(!userInputCode) return wx.showToast(codeText);
     if(!inputPhoneNumber) return wx.showToast(numberText);
     if(verificationCode*1 !== userInputCode*1) return wx.showToast(codeNonEqualText);
 
     const params = {code:userInputCode*1, phone: inputPhoneNumber*1};
     const res = await app.api().login(params);
-    console.log("login: ");
-    console.log(res);
-    // this.setData({verificationCode: res});
+    app.globalData.userInfo = res;
+    wx.setStorageSync(CONSTANTS.VAR_USERINFOKEY, res)
+    wx.navigateBack({delta: 2})
+    // wx.switchTab({url: '/pages/index/index'});
   }
 })

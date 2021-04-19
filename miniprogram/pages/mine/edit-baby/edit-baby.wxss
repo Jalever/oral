@@ -1,0 +1,11 @@
+/* miniprogram/pages/mine/edit-baby/edit-baby.wxss */
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.gender-item {
+  margin-left: 20rpx;
+}

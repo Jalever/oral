@@ -1,28 +1,33 @@
 // const app = getApp()
 const request = require("../utils/request.js");
+const utils = require('../utils/index.js')
 const CONSTANTS = require("../constants/index.js");
 
 module.exports = {
-  //获取common token
-  async onGetPaySign() {
-    console.log("onGetPaySign - res: ");
-    // console.log(invokeRes);
+  //支付
+  async onGetPaySign(data) {
+    console.log('data - onGetPaySign');
+    console.log(data);
+
+    // const dataParams = {
+    //   userId: userInfo ? userInfo.userId : "5099157",
+    //   ...data,
+    // }
+    // const {globalData} = getApp();
+    // const {openId,userInfo} = globalData;
+    // const {userId} = userInfo;
+    let queryParams = utils.json2Form(data);
     const params = {
-      url: `${CONSTANTS.URL_DEVPREFIX}/mengya/weixin/pay/createOrder`,
+      url: `${CONSTANTS.URL_DEVPREFIX}/mengya/weixin/pay/createOrder?${queryParams}`,
       header: {
         'content-type': 'application/json' // 有些接口不需要设置
       },
       method: "POST",
-      data: {
-        body: '软件部测试---腾讯充值中心-QQ会员充值',
-        totalFee: 1,
-        spbillCreateIp: "123.12.12.123",
-        tradeType: "JSAPI",
-        openid: "oRcL64lEuQeuyGsWloGb7Qzr6w6c"
-      }
+      data
     };
-    const res = await request.default(params)
-    // const {data } = res;
+    const res = await request(params)
+    console.log('res - onGetPaySign');
+    console.log(res);
     return res;
   }
 }

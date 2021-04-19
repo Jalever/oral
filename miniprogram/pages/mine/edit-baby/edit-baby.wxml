@@ -1,0 +1,37 @@
+<view class='wrapper'>
+  <mp-cell link>
+    <view>
+      <image src="{{imgSrc}}" class='avatar' />
+    </view>
+    <view slot="footer" bindtap="updateAvatar">修改头像</view>
+  </mp-cell>
+  <mp-cell>
+    <view>宝宝生日</view>
+    <view slot="footer">
+      <datepicker bindchange="bindDateChange" value="{{birthdayValue}}">
+        <!-- <input value="{{birthday}}" /> -->
+        <text>{{item.birthday}}</text>
+      </datepicker>
+    </view>
+  </mp-cell>
+  <mp-cell>
+    <view>宝宝性别</view>
+    <view slot="footer">
+      <!-- <text>{{filters.sex(item.sex)}}</text> -->
+      <radio-group bindchange="radioChange">
+        <label class="weui-check__label gender-item" wx:for="{{genderList}}" wx:key="value">
+          <radio value="{{item.value}}" checked="{{item.value === gender}}" />
+          <text>{{item.name}}</text>
+        </label>
+      </radio-group>
+    </view>
+  </mp-cell>
+  <mp-cell>
+    <view>宝宝昵称</view>
+    <view slot="footer">
+      <input model:value="{{item.nickName}}" bindinput="onInput" />
+    </view>
+  </mp-cell>
+  <button class="btn" type="primary" bindtap="confirm">确认</button>
+</view>
+<wxs src="./edit-baby.wxs" module="filters"></wxs>

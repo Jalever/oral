@@ -1,0 +1,6 @@
+module.exports = {
+  sex: function (data) {
+    if (!data) return "男";
+    return "女";
+  }
+}

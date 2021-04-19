@@ -1,0 +1,23 @@
+<view class="wrapper">
+  <view class="form-row">
+    <text>收货人</text>
+    <input model:value="{{recipient}}" bindinput="bindRecipient" class="form-row-input" />
+  </view>
+  <view class="form-row">
+    <text>手机号码</text>
+    <input model:value="{{phoneNumber}}" bindinput="bindPhoneNumber" class="form-row-input" />
+  </view>
+  <view class="form-row">
+    <text>所在地区</text>
+    <input model:value="{{area}}" bindinput="bindArea" class="form-row-input" />
+  </view>
+  <view class="form-row">
+    <text>详细地址</text>
+    <input model:value="{{address}}" bindinput="bindAddress" class="form-row-input" />
+  </view>
+  <view class="form-row">
+    <text>设为默认地址</text>
+    <switch name="switch" model:checked="{{isDefault}}" />
+  </view>
+  <button type="primary" bindtap="onSave">保存</button>
+</view>

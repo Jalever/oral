@@ -1,29 +1,64 @@
-// const { getAsyncOpenId } = require("../../api");
-
 //index.js
 const app = getApp()
 const request = app.require("utils/request.js");
+const CONSTANTS = app.require("constants/index.js");
 const api = app.require("api/index.js");
 
 Page({
   data: {
     openId: null,
+    statusBarHeight: 0,
+    menuBarHeight: 0,
+    distance: 0,
   },
 
   onLoad: async function (q) {
-    this.getAsyncCommonToken();
-
     // wx.setNavigationBarTitle({
     //   title: "福利"
     // });
-
-
 
     // wx.navigateTo({
     // url: '/pages/warrant/warrant',
     // url: '/pages/phone-login/phone-login',
     // url: '/pages/area-selection/area-selection',
     // })
+    const statusBarHeight = await this.getStatusBarHeight();
+    this.setData({statusBarHeight})
+
+    const menuInfo = wx.getMenuButtonBoundingClientRect();
+    const { top, bottom } = menuInfo;
+    const menuBarHeight = bottom - top;
+    const distance = top - statusBarHeight;
+    this.setData({menuBarHeight,distance});
+    // console.log('statusBarHeight');
+    // console.log(statusBarHeight);
+    // console.log('menuInfo');
+    // console.log(menuInfo);
+    // console.log('menuBarHeight');
+    // console.log(menuBarHeight);
+    // console.log('\n');
+
+  },
+  async onShow() {
+    //获取common token
+    // this.getAsyncCommonToken();
+
+    //检查用户登录状态 && 若无登录，跳转至登录页面
+    // const isLogin = await this.onCheckLoginStatus();
+    // if (!isLogin) return this.navigateLoginPage();
+
+    this.getOpenId();
+  },
+
+  
+  getStatusBarHeight() {
+    return new Promise(async (resolve, reject) => {
+      wx.getSystemInfo({
+        success: function (res) {
+          resolve(res.statusBarHeight)
+        },
+      })
+    })
   },
 
   getUserProfile() {
@@ -50,6 +85,26 @@ Page({
     wx.navigateTo({
       url: '/pages/login/login',
     })
+  },
+  navigatePermissionPage() {
+    wx.navigateTo({
+      url: '/pages/permission/permission',
+    })
+  },
+  navigateWarrantPage() {
+    wx.navigateTo({
+      url: '/pages/warrant/warrant',
+    })
+  },
+  
+  // 判断用户登录状态
+  onCheckLoginStatus() {
+    return new Promise((resolve, reject) => {
+      const userInfoStorage = wx.getStorageSync(CONSTANTS.VAR_USERINFOKEY)
+      const isLogin = !!userInfoStorage;
+      if (isLogin) app.globalData.userInfo = userInfoStorage
+      resolve(isLogin);
+    });
   },
 
   async onRequestPay() {
@@ -89,21 +144,32 @@ Page({
       })
     });
   },
-  //异步获取common-token
-  async getAsyncCommonToken() {
-    const token = await api.getAsyncCommonToken();
-    app.globalData.commonToken = token;
+  async onCheckNetwork () {
+    const network = await app.isOnlineNetwork();
+    console.log('app.checkNetwork - network');
+    console.log(network);
+    console.log('\n');
   },
-  async getAsyncOpenId() {
-    // console.log('app - globalData: ');
-    // console.log(app);
-    // console.log('app.api() - globalData: ');
-    // console.log(app.api());
-    const loginCode = getApp().globalData.loginCode;
+  //异步获取common-token
+  // async getAsyncCommonToken() {
+  //   const token = await api.getAsyncCommonToken();
+  //   app.globalData.commonToken = token;
+  // },
+  //异步获取openId
+  async getOpenId() {
+    // console.log('getApp().globalData - success');
+    // console.log(getApp().globalData);
+
+    const code = await getApp().getLoginCode();
+    const loginCode = code.code;
+    if(!loginCode) return console.error('lack of index.js/getOpenId/loginCode');
     const params = { jsCode: loginCode }
     const openId = await app.api().getAsyncOpenId(params);
+    app.globalData.openId = openId;
     // this.openId = openId;
     this.setData({ openId });
+    console.log('app.globalData - globalData: ');
+    console.log(app.globalData);
   },
 
   async onCopyOpenId() {
@@ -214,7 +280,7 @@ Page({
   },
   invokeSetting() {
     wx.openSetting({
-      success (res) {
+      success(res) {
         console.log('invokeSetting - res')
         console.log(res)
         // res.authSetting = {
@@ -226,8 +292,8 @@ Page({
   },
   getSetting() {
     wx.getSetting({
-      withSubscriptions:true,
-      success (res) {
+      withSubscriptions: true,
+      success(res) {
         console.log('getSetting - res')
         console.log(res)
         // res.authSetting = {

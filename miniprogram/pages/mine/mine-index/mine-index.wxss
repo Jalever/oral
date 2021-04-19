@@ -1,0 +1,29 @@
+/* pages/mine/mine-index/mine-index.wxss */
+.header-part {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-part-image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.header-textpart {
+  margin-left: 10rpx;
+  width: calc(100% - 150rpx);
+  display: flex;
+  flex-direction: column;
+  /* background-color: #00ffff; */
+}
+.header-part-row {
+}
+.header-part-col {
+}
+
+.right-col {
+  margin-left: 10rpx;
+}

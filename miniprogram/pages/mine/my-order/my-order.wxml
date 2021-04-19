@@ -1,0 +1,42 @@
+<view class="wrapper" bind:touchmove="onTouchmove">
+  <view class="tabs-wrapper">
+    <text wx:for="{{tabs}}" wx:for-item="item" wx:for-index="idx" wx:key="idx" class="tab-item {{activeTab === item.id? '.activeTab' : ''}}" bindtap="onTabClick" data-item="{{item}}">
+      {{item.title}}
+    </text>
+  </view>
+  <view class='card-wrapper' wx:for="{{list}}" wx:for-item="item" wx:for-index="idx" wx:key="idx" data-item="{{item}}">
+    <view class='header'>
+      <text>下单时间:{{item.gmtCreate}}</text>
+      <text>{{filters.status(item.status*1)}}</text>
+    </view>
+    <view class='content'>
+      <image src="{{item.icon}}" class='content-img' />
+      <view class='content-rightPart'>
+        <text>{{item.productName}}</text>
+        <text>型号: {{item.skuValus}}</text>
+        <view class='content-price'>
+          <text>原价: {{item.originalPrice}}</text>
+          <text>合计: ￥{{item.orderFee}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='express-row' wx:if="{{!filters.isShowDel(item.status*1)}}">
+      <text>物流单号:</text>
+      <view>
+        <view wx:if="{{item.kuaidiOrder}}">
+          <text>{{item.kuaidiOrder}}</text>
+          <text bindtap="onCopy" class="copy-style" data-item="{{item.kuaidiOrder}}">复制</text>
+        </view>
+        <text wx:else>暂无物流信息</text>
+      </view>
+    </view>
+    <view class='buttons-group' wx:if="{{filters.isShowDel(item.status*1)}}">
+      <button size="mini" bindtap="onRepay" data-item="{{item}}">支付</button>
+      <button size="mini" bindtap="onDel" data-item="{{item}}">删除</button>
+    </view>
+  </view>
+  <view wx:if="{{isLoadedData}}">
+    <text class='bottom-content'>数据加载完成</text>
+  </view>
+</view>
+<wxs src="./my-order.wxs" module="filters"></wxs>

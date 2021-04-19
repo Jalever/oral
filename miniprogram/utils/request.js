@@ -10,9 +10,13 @@ function request(options) {
       data: options.data || {},
       header: options.header || {},
       success: res => {
+        // console.log('wx.request - success');
+        // console.log(res);
         resolve(res.data);
       },
       fail: err => {
+        // console.log('wx.request - fail');
+        // console.log(err);
         reject(err);
       }
     });

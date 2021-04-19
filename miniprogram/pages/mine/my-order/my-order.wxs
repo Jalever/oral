@@ -1,0 +1,35 @@
+module.exports = {
+  status: function (key) {
+    switch (key) {
+      case 10:
+        return '未支付'
+      case 20:
+        return '已支付'
+      case 30:
+        return '已发货'
+      case 40:
+        return '已完成'
+      case 50:
+        return '订单超时'
+
+      default:
+        return '全部'
+    }
+  },
+  isShowDel: function (status) {
+    switch (status) {
+      case 10:
+        return true
+      case 20:
+        return false
+      case 30:
+        return false
+      case 40:
+        return true
+      case 50:
+        return true
+      default:
+        return false
+    }
+  }
+}

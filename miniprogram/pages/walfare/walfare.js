@@ -39,8 +39,8 @@ Page({
     });
     // this.videoSrc = head;
     // this.walfareList = records;
-    console.log("onGetAllWalfare - data: ");
-    console.log(data);
+    // console.log("onGetAllWalfare - data: ");
+    // console.log(data);
   },
 
   /**

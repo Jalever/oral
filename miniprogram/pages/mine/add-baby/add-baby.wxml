@@ -1,0 +1,25 @@
+<view class='wrapper'>
+  <view class='gender-row'>
+    <view class='gender-item' wx:for="{{genderList}}" wx:for-item="item" wx:for-index="idx" wx:key="name" bindtap="selectedGender" data-item="{{item}}">
+      <view class='gender-upper'>
+        <image class='gender-avatar' src="{{item.img}}" />
+        <mp-badge content="V" class='gender-badge' wx:if="{{gender === item.value}}" />
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+  <view class='input-row mtop'>
+    <text class='input-name'>宝宝昵称</text>
+    <input class='input-part' model:value="{{name}}" bindinput="inputName" />
+  </view>
+  <view class='input-row'>
+    <text class='input-name'>宝宝生日</text>
+    <!-- <input class='input-part' /> -->
+    <view class='input-part'>
+      <datepicker bindchange="bindDateChange" value="{{getBirthdayValue}}">
+        <input value="{{birthday}}" />
+      </datepicker>
+    </view>
+  </view>
+  <button type="primary" class='mtop' bindtap="confirm">确定</button>
+</view>

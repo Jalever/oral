@@ -7,4 +7,13 @@ module.exports = {
   VAR_SIGNUPPHONENUMBER: 1,
   VAR_GETBACKPASSWORD: 2,
   VAR_GETVERIFICATIOINCODE: 3,
+
+  VAR_USERINFOKEY: 'VAR_USERINFOKEY',
+
+  //login
+  VAR_LOGINCHANNEL: 'weixin_miniprogram_oral',
+  VAR_LOGINFROM: 'weixin_miniprogram',
+
+  //network
+  VAR_NETWORKTYPE_NONE: 'none',
 };

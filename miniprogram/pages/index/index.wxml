@@ -1,31 +1,41 @@
-<!--index.wxml-->
+<!-- index.wxml -->
+<view class="statusBar" style="height:{{statusBarHeight}}px;"></view>
+<view class="menuBar" style="padding-top:{{distance}}px;padding-bottom:{{distance}}px;height:{{menuBarHeight}}px;"></view>
 <view class="container">
   <!-- <text>index page</text> -->
   <!-- <button type="primary" bindtap="redirectLoginPage">login page</button> -->
   <!-- <view class="page-section-title">
     <text class="headline">这里是第一个页面</text>
   </view> -->
-  
-
   <view class="copy-row">
     <text class="copy-text">openId: {{openId}}</text>
-    <button bindtap="onCopyOpenId"  class="copy-button">copy</button>
+    <button bindtap="onCopyOpenId" class="copy-button">copy</button>
   </view>
+  <button type="primary" bindtap="navigateLoginPage" style="width: 100%;margin-top: 10px;">
+    Login Page
+  </button>
+  <button type="primary" bindtap="navigatePermissionPage" style="width: 100%;margin-top: 10px;">
+    Permission Page
+  </button>
+  <button type="primary" bindtap="navigateWarrantPage" style="width: 100%;margin-top: 10px;">
+    Warrant Page
+  </button>
+  <button type="primary" bindtap="onCheckNetwork" style="width: 100%;margin-top: 10px;">
+    Get Network
+  </button>
   <button type="primary" bindtap="onRequestPay" style="width: 100%">onGetPaySign</button>
-  <button type="primary" bindtap="navigateLoginPage" style="width: 100%;margin-top: 10px;">Login Page</button>
-  <button type="primary" bindtap="getAsyncOpenId" style="width: 100%;margin-top: 10px;">open Id</button>
+  <!-- <button type="primary" bindtap="navigateLoginPage" style="width: 100%;margin-top: 10px;">Login Page</button>
+  <button type="primary" bindtap="getOpenId" style="width: 100%;margin-top: 10px;">open Id</button>
   <button type="primary" bindtap="navigatePhoneLoginPage" style="width: 100%;margin-top: 10px;">Phone-Login
-    Page</button>
-    <button type="primary" bindtap="onSubscribeMsg" style="width: 100%;margin-top: 10px;">Subscribe Message</button>
+    Page</button> -->
+  <!-- <button type="primary" bindtap="onSubscribeMsg" style="width: 100%;margin-top: 10px;">Subscribe Message</button>
     <button type="primary" bindtap="onSubscribeOrder" style="width: 100%;margin-top: 10px;">下单成功通知</button>
     <button type="primary" bindtap="onSubscribeUnread" style="width: 100%;margin-top: 10px;">未读回信提醒</button>
-    <button type="primary" bindtap="onSubscribeDelivery" style="width: 100%;margin-top: 10px;">订单发货提醒</button>
-
-    
-    <button type="primary" bindtap="getSetting" style="width: 100%;margin-top: 10px;">getSetting</button>
-
-    <button type="primary" bindtap="invokeSetting" style="width: 100%;margin-top: 10px;">invokeSetting</button>
-
-
-    
+    <button type="primary" bindtap="onSubscribeDelivery" style="width: 100%;margin-top: 10px;">订单发货提醒</button> -->
+  <!-- <button type="primary" bindtap="getSetting" style="width: 100%;margin-top: 10px;">
+    getSetting
+  </button>
+  <button type="primary" bindtap="invokeSetting" style="width: 100%;margin-top: 10px;">
+    invokeSetting
+  </button> -->
 </view>

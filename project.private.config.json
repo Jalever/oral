@@ -13,10 +13,46 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
-          "query": "type=1",
+          "name": "order-confirmation page",
+          "pathName": "pages/order-confirmation/order-confirmation",
+          "query": "type=1&isDev=true&items=[{\"deleted\":0,\"gmtCreate\":[2021,4,6,19,25,11],\"gmtModified\":[2021,4,12,8,30,18],\"icon\":\"http://alilo-cloud.oss-cn-hangzhou.aliyuncs.com/images/e748c94b-5f2d-4c25-92d8-94df4fe8d71f.jpg\",\"id\":1,\"introduce\":\"http://alilo-cloud.oss-cn-hangzhou.aliyuncs.com/images/e748c94b-5f2d-4c25-92d8-94df4fe8d71f.jpg\",\"name\":\"领牙膏\",\"numberOfRecipients\":1000,\"productId\":1}]",
           "scene": 1047
+        },
+        {
+          "name": "address-creation",
+          "pathName": "pages/address-creation/address-creation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "mine-index",
+          "pathName": "pages/mine/mine-index/mine-index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "baby-list",
+          "pathName": "pages/mine/baby-list/baby-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "add-baby",
+          "pathName": "pages/mine/add-baby/add-baby",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "edit-baby",
+          "pathName": "pages/mine/edit-baby/edit-baby",
+          "query": "isDev=true&item={\"birthday\":\"2011年04月17日\",\"birthdayStr\":\"\",\"createTime\":1618653576000,\"head\":\"\",\"id\":313687,\"isAuto\":1,\"isDel\":0,\"month\":0,\"name\":\"youtube\",\"nickName\":\"youtube\",\"sex\":1,\"sexStr\":\"女\",\"tag\":\"\",\"tagList\":[],\"token\":\"\",\"userId\":5099157,\"year\":0}",
+          "scene": null
+        },
+        {
+          "name": "my-order",
+          "pathName": "pages/mine/my-order/my-order",
+          "query": "",
+          "scene": null
         }
       ]
     }

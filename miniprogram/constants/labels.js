@@ -8,4 +8,11 @@ module.exports = {
   LABEL_CONFIRM: "确认",
   LABEL_PLACEHOLDERPHONENUMBER: "请输入手机号码",
   LABEL_PLACEHOLDERVERIFIEDCODE: "请输入验证码",
+
+  // toast
+  LABEL_EMPTYUSERINFO: "用户地址缺少",
+  LABEL_EMPTYPROPERTIES: "请选择商品型号",
+  LABEL_NONGENDER: "请选择宝宝性别",
+  LABEL_NONNICKNAME: "请输入宝宝昵称",
+  LABEL_NONBIRTHDAY: "请选择宝宝生日",
 };

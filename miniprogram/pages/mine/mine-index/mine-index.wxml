@@ -1,0 +1,18 @@
+<view>
+  <view class='header-part'>
+    <image src="/images/code-cloud-callback-config.png" class='header-part-image' />
+    <view class='header-textpart'>
+      <view class='header-part-row'>
+        <text class='header-part-name'>{{userInfo.userName || "暂无数据"}}</text>
+      </view>
+      <view class='header-part-row'>
+        <text class='header-part-col'>{{userInfo.age || "暂无数据"}}</text>
+        <text class='header-part-col right-col'>{{filters.sex(userInfo.sex)}}</text>
+      </view>
+    </view>
+  </view>
+  <mp-cell wx:for="{{navList}}" wx:for-item="item" wx:for-index="idx" wx:key="name" link value="{{item.name}}"
+    url="{{item.path}}"></mp-cell>
+</view>
+
+<wxs src="./mine-index.wxs" module="filters"></wxs>

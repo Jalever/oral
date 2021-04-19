@@ -8,7 +8,15 @@
     "pages/phone-login/phone-login",
     "pages/area-selection/area-selection",
     "pages/walfare/walfare",
-    "pages/order-confirmation/order-confirmation"
+    "pages/order-confirmation/order-confirmation",
+    "pages/address-creation/address-creation",
+    "pages/mine/mine-index/mine-index",
+    "pages/mine/my-message/my-message",
+    "pages/mine/baby-list/baby-list",
+    "pages/mine/my-order/my-order",
+    "pages/mine/setting/setting",
+    "pages/mine/add-baby/add-baby",
+    "pages/mine/edit-baby/edit-baby"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -43,7 +51,7 @@
         "selectedIconPath": "images/tabbar/nav_nry_selected.png"
       },
       {
-        "pagePath": "pages/second/second",
+        "pagePath": "pages/mine/mine-index/mine-index",
         "text": "我的",
         "iconPath": "images/tabbar/nav_nry_normal.png",
         "selectedIconPath": "images/tabbar/nav_nry_selected.png"

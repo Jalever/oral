@@ -1,0 +1,58 @@
+/* miniprogram/pages/mine/add-baby/add-baby.wxss */
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.gender-row {
+  display: flex;
+  align-items: center;
+  background-color: #ff0000;
+}
+
+.gender-item {
+  width: 400rpx;
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.gender-item:first-child {
+  background-color: #00ffff;
+}
+.gender-upper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.gender-avatar {
+  width: 100rpx !important;
+  height: 100rpx !important;
+  border-radius: 50%;
+}
+.gender-badge {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+}
+.mtop {
+  margin-top: 30rpx;
+}
+
+.input-row {
+  display: flex;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+.input-name {
+}
+.input-part {
+  margin-left: 10rpx;
+  flex: 1;
+  border: 1px solid #ccc;
+}

@@ -67,7 +67,47 @@ Page({
       encryptedData, iv, jsCode
     };
     const data = await app.api().getAsyncPhoneNum(params);
-    if(!data) return;
+    if (!data) return;
+    console.log('data - getAsyncPhoneNum');
+    console.log(data);
+    const res = await this.getUserProfile();
+    const { userInfo } = res;
+    console.log('res - getUserProfile');
+    console.log(res);
+    await this.onWechatLogin({...data, ...userInfo});
     app.globalData.phoneNumber = data.purePhoneNumber;
-  }
+    console.log('\n');
+  },
+  //获取用户信息
+  getUserProfile() {
+    return new Promise((resolve,reject) => {
+      wx.getUserInfo({
+        success: res => resolve(res),
+        fail: err => reject(err)
+      })
+    });
+  },
+  // 微信一键登录
+  async onWechatLogin (args) {
+    const { purePhoneNumber,avatarUrl,nickName,gender } = args;
+
+    // console.log('args - onWechatLogin');
+    // console.log(args);
+    // console.log('\n');
+    
+    
+    // const { avatarUrl,nickName,gender  } = e.detail;
+    // const gData = app.globalData;
+    // const jsCode = gData.loginCode;
+    // const params = {
+    //   encryptedData, iv, jsCode
+    // };
+    const data = await app.api().getAsyncWechatLogin(args);
+    if (!data) return;
+    // console.log('data - getAsyncPhoneNum');
+    // console.log(data);
+    // console.log('\n');
+    
+    // app.globalData.phoneNumber = data.purePhoneNumber;
+  },
 })

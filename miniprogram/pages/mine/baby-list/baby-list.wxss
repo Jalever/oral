@@ -1,0 +1,73 @@
+/* miniprogram/pages/mine/baby-list/baby-list.wxss */
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  /* background-color: #ff0000; */
+}
+
+.item {
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 40rpx;
+}
+.avatar-item {
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+}
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.badge {
+  position: absolute;
+  top: -0.4em;
+  right: -0.4em;
+}
+
+.center-part {
+  flex: 1;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #00ffff; */
+}
+
+.center-uppperpart {
+  display: flex;
+}
+
+.nickname {
+  display: inline-block;
+  width: 200rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.edit,
+.delete {
+  width: 100rpx;
+  min-width: 100rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.delete {
+  margin-left: 10rpx;
+}
+
+.add-baby {
+  margin-top: 100rpx;
+  padding-left: 100rpx;
+  width: 100%;
+  height: 100rpx;
+  background-color: #f5fffa;
+  display: flex;
+  align-items: center;
+}
